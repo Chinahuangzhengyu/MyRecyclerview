@@ -1,5 +1,7 @@
 package com.baidu.www.myrecyclerview.adapter;
 
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,7 +67,13 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.Myviewholder> {
      */
     @Override
     public Myviewholder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.myrecyclerview_item,parent,false);
+        RecyclerView.LayoutManager manager = ((RecyclerView) parent).getLayoutManager();
+        View view=null;
+        if (manager instanceof GridLayoutManager){
+            view=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_two,parent,false);
+        }else if (manager instanceof LinearLayoutManager){
+           view = LayoutInflater.from(parent.getContext()).inflate(R.layout.myrecyclerview_item,parent,false);
+        }
         return new Myviewholder(view);
     }
     //绑定完毕以后

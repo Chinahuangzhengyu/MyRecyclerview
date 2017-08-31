@@ -87,8 +87,11 @@ public class MainActivity extends AppCompatActivity {
         }
         if (manager instanceof GridLayoutManager){
             myrecyclerview.setLayoutManager(new LinearLayoutManager(this));
+            myrecyclerview.setAdapter(myadapter);
         }else if (manager instanceof LinearLayoutManager){
-            myrecyclerview.setLayoutManager(new GridLayoutManager(this,5));
+            myrecyclerview.setLayoutManager(new GridLayoutManager(this,3));
+            myrecyclerview.setAdapter(myadapter);
         }
+
     }
 }
